@@ -1,0 +1,71 @@
+<div class="container list-container">
+
+    <h1 class="mt-3">Add Consultation</h1>
+
+    <form [formGroup]="myForm" class="list-content" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="mt-3">
+                    <label for="responsePatientDtos" class="form-label">Patient</label>
+                    <ng-container *ngIf="responsePatientDtos">
+                        <select class="form-control" id="patientId" formControlName="patientId">
+                            <option *ngFor="let responsePatientDto of responsePatientDtos"
+                                [value]="responsePatientDto.id">
+                                {{responsePatientDto.name}}
+                            </option>
+                        </select>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="mt-3">
+                    <label for="responsePatientDtos" class="form-label">Doctor</label>
+                    <ng-container *ngIf="responseDoctorDtos">
+                        <select class="form-control" id="doctorId" formControlName="doctorId">
+                            <option *ngFor="let responseDoctorDto of responseDoctorDtos"
+                                [value]="responseDoctorDto.id">
+                                {{responseDoctorDto.doctorName}}
+                            </option>
+                        </select>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="mt-3">
+                    <label class="form-label">Visit Date*</label>
+                    <input type="date" class="form-control" id="consultationDate" formControlName="consultationDate">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="mt-3">
+                    <label class="form-label">Visit Time*</label>
+                    <input type="time" class="form-control" id="consultationTime" formControlName="consultationTime">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="mt-3">
+                    <label class="form-label">Remarks</label>
+                    <input type="text" class="form-control" id="remarks" formControlName="remarks">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="co-lg-12 col-sm-12 col-xs-12 col-md-12">
+                <div class="mt-3 text-center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"> </i> Save
+                    </button>
+                    <button type="button" class="btn btn-secondary ms-3" (click)="back()">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

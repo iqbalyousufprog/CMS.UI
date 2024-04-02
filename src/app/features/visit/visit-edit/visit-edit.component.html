@@ -1,0 +1,57 @@
+<div class="container form-container">
+
+    <h1 class="mt-3">Edit Visit</h1>
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        {{myForm.valid}}
+        <div class="row form-content">
+            <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6">
+                <div class="mt-3">
+                    <label class="form-label">Visit Id</label>
+                    <input type="text" class="form-control" formControlName="id">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6">
+                <div class="mt-3">
+                    <label for="responsePatientDtos" class="form-label">Patient</label>
+                    <ng-container *ngIf="responsePatientDtos">
+                        <select class="form-control" id="patientId" formControlName="patientId">
+                            <option *ngFor="let responsePatientDto of responsePatientDtos" [value]="responsePatientDto.id">
+                                {{responsePatientDto.name}}
+                            </option>
+                        </select>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6">
+                <div class="mt-3">
+                    <label class="form-label">Visit Date*</label>
+                    <input type="date" class="form-control" value="{{ responseDto?.visitDate | date:'yyyy-MM-dd' }}" id="visitDate" formControlName="visitDate">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6">
+
+                <div class="mt-3">
+                    <label class="form-label">Visit Time*</label>
+                    <input type="time" class="form-control"  id="visitTime" value="{{ responseDto?.visitTime | date: 'hh:mm'}}" formControlName="visitTime">
+                </div>
+    
+            </div>
+            <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+                <div class="mt-3 text-center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"> </i> Save
+                    </button>
+                    <button type="button" class="btn btn-danger ms-3" (click)="onDelete()">
+                        <i class="fa fa-trash"></i> Delete
+                    </button>
+                    <button type="button" class="btn btn-secondary ms-3" (click)="back()">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </button> 
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

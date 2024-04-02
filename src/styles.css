@@ -1,0 +1,51 @@
+
+ 
+/* You can add global styles to this file, and also import other style files */
+.form-container{
+    background: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.form-container > h1 {
+    font-size: 19px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    padding: 15px 0 15px 10px;
+    color: #333;
+}
+
+.form-container .form-content {
+     padding: 20px;;
+}
+
+
+.list-container{
+    background: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.list-container > h1 {
+    font-size: 19px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    padding: 15px 0 15px 10px;
+    color: #333;
+}
+
+.list-container .list-content {
+     padding: 20px;;
+}
+
+
+.action{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.action i{
+    font-size: 18px ;
+}

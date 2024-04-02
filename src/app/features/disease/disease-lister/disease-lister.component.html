@@ -1,0 +1,41 @@
+<div class="container list-container">
+
+    <h1 class="mt-3">Diseaes</h1>
+
+
+    <ng-container>
+        <div class="row list-content">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-end mt-3">
+                    <a [routerLink]="['/admin/diseases/add']" class="btn btn-primary"> <i class="fa fa-plus "></i> Add  Disease</a>
+
+                </div>
+            </div>
+            <div class="col-lg-12 ">
+                <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Disease Name</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="responseDtos">
+                        <tr *ngFor="let responseDto of responseDtos">
+                            <td>{{responseDto.id}}</td>
+                            <td>{{responseDto.diseaseName}}</td>
+                            <td class="action">
+
+                                <a [routerLink]="['/admin/diseases', responseDto.id]">
+                                    <i class="fa fa-edit text-dark"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </ng-container>
+</div>

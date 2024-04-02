@@ -1,0 +1,81 @@
+<div class="container list-container">
+
+    <h1 class="mt-3">Patient</h1>
+
+
+    <ng-container>
+        <div class="row list-content">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-between mt-3">
+
+                    <div class="d-flex">
+                        <div class="input-group mb-3">
+
+                            <input type="text" class="form-control" [(ngModel)]="patientSearchFilter.name"
+                                placeholder="Name">
+                            <input type="text" class="form-control" [(ngModel)]="patientSearchFilter.age"
+                                placeholder="Age">
+ 
+                            <select class="form-control" [(ngModel)]="patientSearchFilter.gender">
+                                <option value="">--Select Gender--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <input type="text" class="form-control" [(ngModel)]="patientSearchFilter.phoneNumber"
+                                placeholder="Phone No">
+                            <div class="input-group-append">
+                                <span class="input-group-text btn btn-light" (click)="searchFilter()"> <i
+                                        class="fa fa-search mr-2 "></i> Search</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <a [routerLink]="['/admin/patients/add']" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> Add Patient
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 ">
+                <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Phone Number</th>
+                            <th>Disease</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="responseDtos">
+                        <tr *ngFor="let responseDto of responseDtos">
+                            <td>{{responseDto.id}}</td>
+                            <td>{{responseDto.name}}</td>
+                            <td>{{responseDto.age}}</td>
+                            <td>{{responseDto.gender}}</td>
+                            <td>{{responseDto.phoneNumber}}</td>
+                            <td>
+                                <span *ngFor="let disease of responseDto.diseases">
+                                    <span class="badge bg-secondary me-2">{{disease.diseaseName}}</span>
+                                </span>
+                            </td>
+                            <td class="action">
+                                <a [routerLink]="['/admin/patients', responseDto.id]">
+                                    <i class="fa fa-edit text-dark"></i>
+                                </a>
+                                <a [routerLink]="['/admin/patientsview', responseDto.id]">
+                                    <i class="fa fa-eye  text-info"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </ng-container>
+</div>

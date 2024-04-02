@@ -1,0 +1,11 @@
+strong , span{
+    margin-bottom: 100px !important;
+}
+
+ strong, span{
+    margin-bottom: 100px !important;
+}
+
+table tbody td i{
+    margin-left: 5px;
+}
