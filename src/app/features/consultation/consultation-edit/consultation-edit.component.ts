@@ -78,10 +78,18 @@ export class ConsultationEditComponent {
           patientId: this.responseDto.patientId,
           doctorId: this.responseDto.doctorId,
           remarks: this.responseDto.remarks
-          // consultationDate: new Date(this.responseDto.consultationDate).toLocaleDateString({ local}),
+          // c: new Date(this.responseDto.consultationDate).toLocaleDateString({ local}),
           // consultationTime: extractTimeFromDate(this.response(''Dto.consultationTime)
         });
+
         console.log(this.myForm?.value);
+        this.myForm?.controls['consultationDate'].valueChanges.subscribe(newValue => {
+          console.log('New consultationDate value:', newValue);
+        });
+
+        this.myForm?.controls['consultationTime'].valueChanges.subscribe(newValue => {
+          console.log('New consultationTime value:', newValue);
+        });
 
         if (responseObject.message && responseObject.message.trim() !== '') {
           console.log(responseObject.message);
