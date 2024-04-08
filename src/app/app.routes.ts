@@ -15,6 +15,9 @@ import { ConsultationListerComponent } from './features/consultation/consultatio
 import { ConsultationAddComponent } from './features/consultation/consultation-add/consultation-add.component';
 import { ConsultationEditComponent } from './features/consultation/consultation-edit/consultation-edit.component';
 import { PatientViewComponent } from './features/patient/patient-view/patient-view.component';
+import { DepartmentListerComponent } from './features/department/department-lister/department-lister.component';
+import { DepartmentAddComponent } from './features/department/department-add/department-add.component';
+import { DepartmentEditComponent } from './features/department/department-edit/department-edit.component';
 
 export const routes: Routes = [
     //disease
@@ -85,5 +88,18 @@ export const routes: Routes = [
     {
         path: 'admin/consultations/:id',
         component: ConsultationEditComponent
+    },
+    //department
+    {
+        path: 'admin/departments',
+        component: DepartmentListerComponent
+    },
+    {
+        path: 'admin/departments/add',
+        component: DepartmentAddComponent
+    },
+    {
+        path: 'admin/departments/:id',
+        component: DepartmentEditComponent
     },
 ];

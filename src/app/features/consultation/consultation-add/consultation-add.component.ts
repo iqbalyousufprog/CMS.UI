@@ -10,6 +10,8 @@ import { PatientService } from '../../patient/service/patient.service';
 import { DoctorService } from '../../doctor/service/doctor.service';
 import { ResponseObject } from '../../../base/base.model';
 import { convertToDateTime } from '../../../shared/utility';
+import { DepartmentService } from '../../department/service/department.service';
+import { responseDepartmentDto } from '../../../models/department.model';
 
 @Component({
   selector: 'app-consultation-add',
@@ -23,10 +25,12 @@ export class ConsultationAddComponent {
   responseDto?: responseconsultationDto;
   responsePatientDtos?: responsePatientDto[];
   responseDoctorDtos?: responseDoctorDto[];
+  responseDepartmentDtos?: responseDepartmentDto[];
 
   myForm: FormGroup = this.formBuilder.group({
     patientId: new FormControl('', [Validators.required]),
     doctorId: new FormControl('', [Validators.required]),
+    departmentId: new FormControl('', [Validators.required]),
     consultationDate: new FormControl('', [Validators.required]),
     consultationTime: new FormControl('', [Validators.required]),
     remarks: new FormControl('')
@@ -36,12 +40,14 @@ export class ConsultationAddComponent {
     private router: Router,
     private consultationService: ConsultationService,
     private patientService: PatientService,
-    private dctorService: DoctorService) {
+    private dctorService: DoctorService,
+    private departmentService: DepartmentService) {
   }
 
   ngOnInit(): void {
     this.getAllPatients();
     this.getAllDoctors();
+    this.getAllDepartments();
   }
 
   async getAllPatients() {
@@ -68,6 +74,24 @@ export class ConsultationAddComponent {
 
     if (responseObject.isSuccess) {
       this.responseDoctorDtos = responseObject.result;
+
+      if (responseObject.message && responseObject.message.trim() !== '') {
+        console.log(responseObject.message);
+      }
+    }
+    else {
+      if (responseObject.message && responseObject.message.trim() !== '') {
+        console.log(responseObject.message);
+      }
+    }
+  }
+
+  async getAllDepartments() {
+    const responseObject: ResponseObject<responseDepartmentDto[]> =
+      await this.departmentService.getAll();
+
+    if (responseObject.isSuccess) {
+      this.responseDepartmentDtos = responseObject.result;
 
       if (responseObject.message && responseObject.message.trim() !== '') {
         console.log(responseObject.message);

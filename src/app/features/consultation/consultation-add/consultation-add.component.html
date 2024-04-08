@@ -49,6 +49,19 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
                 <div class="mt-3">
+                    <label for="responseDepartmentDtos" class="form-label">Department</label>
+                    <ng-container *ngIf="responseDepartmentDtos">
+                        <select class="form-control" id="departmentId" formControlName="departmentId">
+                            <option *ngFor="let responseDepartmentDto of responseDepartmentDtos"
+                                [value]="responseDepartmentDto.id">
+                                {{responseDepartmentDto.name}}
+                            </option>
+                        </select>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+                <div class="mt-3">
                     <label class="form-label">Remarks</label>
                     <input type="text" class="form-control" id="remarks" formControlName="remarks">
                 </div>
